@@ -7,6 +7,7 @@ A robust and scalable backend system for managing users, accounts, and financial
 ## 🚀 Features
 
 - 🔐 JWT-based Authentication & Authorization  
+- 🚫 Token Blacklisting for secure logout  
 - 👤 User & Account Management  
 - 💸 Secure Money Transfer System  
 - 📒 Ledger-based transaction tracking  
@@ -38,10 +39,12 @@ A robust and scalable backend system for managing users, accounts, and financial
 
 ## 🔐 Authentication & Security
 
-- Stateless authentication using JWT  
-- Passwords securely hashed using bcrypt  
-- Middleware-based route protection  
-- Token expiration policies for enhanced security  
+- Implemented stateless authentication using JWT  
+- Secured passwords using bcrypt hashing  
+- Protected private routes with middleware-based authorization  
+- Added token blacklist mechanism to invalidate JWTs after logout  
+- Enforced token expiration policies for better session security  
+- Included separate middleware for privileged system-user access
 
 ---
 
@@ -90,6 +93,14 @@ Implements a **ledger-based accounting system** to ensure accurate and traceable
   - Registration confirmation  
   - Transaction alerts  
 
+## 📌 Key Design Decisions
+
+- Used ledger-based system instead of direct balance updates for consistency  
+- Implemented idempotency to prevent duplicate financial operations  
+- Used MongoDB transactions (sessions) for atomic operations  
+- Added JWT blacklist support to invalidate logged-out tokens securely  
+- Separated business logic using service layer for maintainability  
+- Applied JWT for stateless and scalable authentication  
 ---
 
 ## 📡 API Endpoints
@@ -109,7 +120,7 @@ Implements a **ledger-based accounting system** to ensure accurate and traceable
 ## ⚙️ Setup & Installation
 
 ```bash
-git clone https://github.com/your-username/banking-ledger.git
+git clone https://github.com/Tiyas17/backend-ledger.git
 cd banking-ledger
 npm install
 npm run dev
