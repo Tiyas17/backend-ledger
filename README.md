@@ -125,5 +125,7 @@ cd banking-ledger
 npm install
 npm run dev
 
-Follows a modular **MVC architecture**:
+
+```
+
 
